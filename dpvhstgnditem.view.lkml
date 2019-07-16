@@ -79,59 +79,69 @@ view: dpvhstgnditem {
     type: number
     value_format_name: id
     sql: ${TABLE}."FKCATEGORYID" ;;
+    hidden: yes
   }
 
   dimension: fkdaypartid {
     type: number
     value_format_name: id
     sql: ${TABLE}."FKDAYPARTID" ;;
+    hidden: yes
   }
 
   dimension: fkemployeenumber {
     type: number
     sql: ${TABLE}."FKEMPLOYEENUMBER" ;;
+    hidden: yes
   }
 
   dimension: fkitemid {
     type: number
     value_format_name: id
     sql: ${TABLE}."FKITEMID" ;;
+    hidden: yes
   }
 
   dimension: fkoccasionid {
     type: number
     value_format_name: id
     sql: ${TABLE}."FKOCCASIONID" ;;
+    hidden: yes
   }
 
   dimension: fkordermodeid {
     type: number
     value_format_name: id
     sql: ${TABLE}."FKORDERMODEID" ;;
+    hidden: yes
   }
 
   dimension: fkrevenueid {
     type: number
     value_format_name: id
     sql: ${TABLE}."FKREVENUEID" ;;
+    hidden: yes
   }
 
   dimension: fkstoreid {
     type: number
     value_format_name: id
     sql: ${TABLE}."FKSTOREID" ;;
+    hidden: yes
   }
 
   dimension: fktaxid {
     type: number
     value_format_name: id
     sql: ${TABLE}."FKTAXID" ;;
+    hidden: yes
   }
 
   dimension: fkterminalid {
     type: number
     value_format_name: id
     sql: ${TABLE}."FKTERMINALID" ;;
+    hidden: yes
   }
 
   dimension: fohuniquetableid {
@@ -199,6 +209,19 @@ view: dpvhstgnditem {
   dimension: modifierfunctiontypes {
     type: number
     sql: ${TABLE}."MODIFIERFUNCTIONTYPES" ;;
+  }
+
+  dimension: modifierfunctiontypes_name {
+    type: string
+    sql: when ${TABLE}."MODIFIERFUNCTIONTYPES" = 0 then "Modifer Code Not Used"
+          when ${TABLE}."MODIFIERFUNCTIONTYPES" = 1 then "WITH Modifier Code"
+          when ${TABLE}."MODIFIERFUNCTIONTYPES" = 5 then "MESSAGE Modifier Code (Use Internally)"
+          when ${TABLE}."MODIFIERFUNCTIONTYPES" = 6 then "SUBSTITUTE Modifier Code"
+          when ${TABLE}."MODIFIERFUNCTIONTYPES" = 7 then "FOR Modifier Code (Use Internally)"
+          when ${TABLE}."MODIFIERFUNCTIONTYPES" = 8 then "DELETED Modifier Code"
+          when ${TABLE}."MODIFIERFUNCTIONTYPES" = 11 then "INACTIVE Modifier Code (Use Internally)"
+          when ${TABLE}."MODIFIERFUNCTIONTYPES" = 12 then "PRINTED DELETED Modifier Code"
+          when ${TABLE}."MODIFIERFUNCTIONTYPES" = 13 then "CANCELLED Modifier Code";;
   }
 
   dimension: orgprice {
@@ -306,10 +329,5 @@ view: dpvhstgnditem {
     type: number
     value_format_name: id
     sql: ${TABLE}."UNIQUEID" ;;
-  }
-
-  measure: count {
-    type: count
-    drill_fields: [bohcontrolname]
   }
 }

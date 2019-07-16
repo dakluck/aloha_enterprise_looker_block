@@ -2,6 +2,7 @@ connection: "snowflake_raw_prod"
 include: "*.view.lkml"
 
 explore: dpvhstgnditem {
+  label: "Sales"
 
   join: gblstore {
     type: inner
@@ -63,9 +64,16 @@ explore: dpvhstgnditem {
     sql_on: ${dpvhstgnditem.fkrevenueid} = ${revenue.revenueid} ;;
   }
 
+  # need to check this join to ensure accuracy
+  join: dpvhstgndline {
+    type: left_outer
+    relationship: one_to_many
+    sql_on: ${dpvhstgnditem.entryid} = ${dpvhstgndline.entryid} and ${dpvhstgnditem.fkstoreid} = ${dpvhstgndline.fkstoreid} and ${dpvhstgnditem.checknumber} = ${dpvhstgndline.checknumber} and ${dpvhstgnditem.dateofbusiness_raw} = ${dpvhstgndline.dateofbusiness_raw};;
+  }
 }
 
 explore: dpvhstgndline {
+  label: "Discounts and Promotions"
 
   join: gblstore {
     type: inner
