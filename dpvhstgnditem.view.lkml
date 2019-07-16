@@ -204,6 +204,7 @@ view: dpvhstgnditem {
   dimension: modcode {
     type: number
     sql: ${TABLE}."MODCODE" ;;
+
   }
 
   dimension: modifierfunctiontypes {
@@ -323,6 +324,17 @@ view: dpvhstgnditem {
   dimension: type {
     type: number
     sql: ${TABLE}."TYPE" ;;
+  }
+
+  dimension: type_name {
+    type: string
+    sql:  when ${TABLE}."TYPE" = 0 then "Normal Sale"
+          when ${TABLE}."TYPE" = 1 then "Refund"
+          when ${TABLE}."TYPE" = 2 then "Revenue Item"
+          when ${TABLE}."TYPE" = 3 then "Refunded Revenue Item"
+          when ${TABLE}."TYPE" = 4 then "Open Item"
+          when ${TABLE}."TYPE" = 5 then "Family Style Reordered Item"
+          when ${TABLE}."TYPE" = 6 then "Refunded Family Style Reordered Item";;
   }
 
   dimension: uniqueid {

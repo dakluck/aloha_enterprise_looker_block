@@ -81,6 +81,18 @@ explore: dpvhstgndline {
     sql_on: ${dpvhstgndline.fkstoreid} = ${gblstore.storeid} ;;
   }
 
+  join: areas {
+    type: inner
+    relationship: one_to_one
+    sql_on: ${gblstore.fkareaid} = ${areas.areaid} ;;
+  }
+
+  join: region {
+    type: inner
+    relationship: one_to_one
+    sql_on: ${gblstore.fkregionid} = ${region.regionid} ;;
+  }
+
   join: cfgitembystore {
     type: inner
     relationship: one_to_many
@@ -110,4 +122,27 @@ explore: dpvhstgndline {
     relationship: one_to_many
     sql_on: ${dpvhstgndline.type} = 2 and ${dpvhstgndline.typeid} = ${promotion.promotionid};;
   }
+}
+
+explore: hstimportcompletion {
+  label: "Replication Status"
+
+  join: gblstore {
+    type: inner
+    relationship: one_to_many
+    sql_on: ${hstimportcompletion.fkstoreid} = ${gblstore.storeid} ;;
+  }
+
+  join: areas {
+    type: inner
+    relationship: one_to_one
+    sql_on: ${gblstore.fkareaid} = ${areas.areaid} ;;
+  }
+
+  join: region {
+    type: inner
+    relationship: one_to_one
+    sql_on: ${gblstore.fkregionid} = ${region.regionid} ;;
+  }
+
 }
