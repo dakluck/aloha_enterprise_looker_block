@@ -64,3 +64,42 @@ explore: dpvhstgnditem {
   }
 
 }
+
+explore: dpvhstgndline {
+
+  join: gblstore {
+    type: inner
+    relationship: one_to_many
+    sql_on: ${dpvhstgndline.fkstoreid} = ${gblstore.storeid} ;;
+  }
+
+  join: cfgitembystore {
+    type: inner
+    relationship: one_to_many
+    sql_on: ${dpvhstgndline.fkitemid} = ${cfgitembystore.itemid} and ${dpvhstgndline.fkstoreid} = ${cfgitembystore.fkstoreid} ;;
+  }
+
+  join: category {
+    type: inner
+    relationship: one_to_many
+    sql_on: ${dpvhstgndline.fkcategoryid} = ${category.categoryid};;
+  }
+
+  join: revenue {
+    type: inner
+    relationship: one_to_many
+    sql_on: ${dpvhstgndline.fkrevenueid} = ${revenue.revenueid} ;;
+  }
+
+  join: comp {
+    type: inner
+    relationship: one_to_many
+    sql_on: ${dpvhstgndline.type} = 3 and ${dpvhstgndline.typeid} = ${comp.compid} ;;
+  }
+
+  join: promotion {
+    type: inner
+    relationship: one_to_many
+    sql_on: ${dpvhstgndline.type} = 2 and ${dpvhstgndline.typeid} = ${promotion.promotionid};;
+  }
+}
