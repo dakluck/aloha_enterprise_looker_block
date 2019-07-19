@@ -359,6 +359,7 @@ view: dpvhstgnditem {
   measure: units_sold {
     type: sum
     sql: ${quantityunit};;
+    ## removes returns
     filters: {
       field: type
       value: "-2"
@@ -367,6 +368,7 @@ view: dpvhstgnditem {
         field: category.name
         value: "-PX Sales,-GC & Misc"
       }
+      ## removes modifiers
       filters: {
         field: parentid
         value: "0"
