@@ -342,4 +342,27 @@ view: dpvhstgnditem {
     value_format_name: id
     sql: ${TABLE}."UNIQUEID" ;;
   }
+
+  measure: net_sales {
+    type: number
+    sql: ${discpric} - ${incltax};;
+  }
+
+  measure: units_sold {
+    type: sum
+    sql: ${quantityunit};;
+    filters: {
+      field: type
+      value: "-2"
+      }
+      filters: {
+        field: category.name
+        value: "-PX Sales,-GC & Misc"
+      }
+      filters: {
+        field: parentid
+        value: "0"
+      }
+  }
+
 }
