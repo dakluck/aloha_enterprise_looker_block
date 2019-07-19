@@ -343,6 +343,14 @@ view: dpvhstgnditem {
     sql: ${TABLE}."UNIQUEID" ;;
   }
 
+  dimension: pounds {
+    type: number
+    sql: when category.name = "Coffee (FG)" and cfgitembystore.chitname2 = 1 then ${quantity}
+         when category.name = "Coffee (FG)" and cfgitembystore.chitname2 = 2 then ${quantity}/2
+        when category.name = "Coffee (FG)" and cfgitembystore.chitname2 = 3 then ${quantity}
+        when category.name = "Coffee (FG)" and cfgitembystore.chitname2 is null then ${quantity} else 0;;
+  }
+
   measure: net_sales {
     type: number
     sql: ${discpric} - ${incltax};;
@@ -363,6 +371,19 @@ view: dpvhstgnditem {
         field: parentid
         value: "0"
       }
+  }
+
+  measure: pounds_sold {
+    type: sum
+    sql: ${quantityunit} ;;
+    filters: {
+      field: category.name
+      value: "Coffee (FG)"
+    }
+    filters: {
+      field: category.name
+      value: "Coffee (FG)"
+    }
   }
 
 }
