@@ -346,10 +346,10 @@ view: dpvhstgnditem {
 
   dimension: pounds {
     type: number
-    sql:  when ${category.name} = "Coffee (FG)" and ${cfgitembystore.chitname2} = 1 then ${quantity}
+    sql:  case when ${category.name} = "Coffee (FG)" and ${cfgitembystore.chitname2} = 1 then ${quantity}
           when ${category.name} = "Coffee (FG)" and ${cfgitembystore.chitname2} = 2 then ${quantity}/2
           when ${category.name} = "Coffee (FG)" and ${cfgitembystore.chitname2} = 3 then ${quantity}
-          when ${category.name} = "Coffee (FG)" and ${cfgitembystore.chitname2} is null then ${quantity};;
+          when ${category.name} = "Coffee (FG)" and ${cfgitembystore.chitname2} is null then ${quantity} else 0 end;;
   }
 
   measure: net_sales {
