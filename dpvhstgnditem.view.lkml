@@ -346,10 +346,10 @@ view: dpvhstgnditem {
 
   dimension: pounds {
     type: number
-    sql: when ${category.name} = "Coffee (FG)" and ${cfgitembystore.chitname2} = 1 then ${quantity}
-         when ${category.name} = "Coffee (FG)" and ${cfgitembystore.chitname2} = 2 then ${quantity}/2
-        when ${category.name} = "Coffee (FG)" and ${cfgitembystore.chitname2} = 3 then ${quantity}
-        when ${category.name} = "Coffee (FG)" and ${cfgitembystore.chitname2} is null then ${quantity} else 0;;
+    sql:  when ${category.name} = "Coffee (FG)" and ${cfgitembystore.chitname2} = 1 then ${quantity}
+          when ${category.name} = "Coffee (FG)" and ${cfgitembystore.chitname2} = 2 then ${quantity}/2
+          when ${category.name} = "Coffee (FG)" and ${cfgitembystore.chitname2} = 3 then ${quantity}
+          when ${category.name} = "Coffee (FG)" and ${cfgitembystore.chitname2} is null then ${quantity};;
   }
 
   measure: net_sales {
@@ -376,9 +376,11 @@ view: dpvhstgnditem {
       }
   }
 
+
   measure: pounds_sold {
     type: sum
-    sql: ${pounds} ;;
+    sql: ${pounds};;
   }
+
 
 }
