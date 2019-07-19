@@ -341,6 +341,7 @@ view: dpvhstgnditem {
     type: number
     value_format_name: id
     sql: ${TABLE}."UNIQUEID" ;;
+    primary_key: yes
   }
 
   dimension: pounds {
