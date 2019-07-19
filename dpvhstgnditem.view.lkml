@@ -372,7 +372,7 @@ view: dpvhstgnditem {
       }
       filters: {
         field: category.name
-        value: "-PX Sales,-GC & Misc"
+        value: "-PX Sales,-GC ^& Misc"
       }
       ## removes modifiers
       filters: {
