@@ -352,9 +352,14 @@ view: dpvhstgnditem {
           when ${category.name} = 'Coffee (FG)' and ${cfgitembystore.chitname2} is null then ${quantity} else 0 end;;
   }
 
-  measure: net_sales {
+  dimension: net_sales_column {
     type: number
-    sql: ${discpric} - ${incltax};;
+    sql: ${discpric} - ${incltax} ;;
+  }
+
+  measure: net_sales {
+    type: sum
+    sql: ${net_sales_column};;
   }
 
   measure: units_sold {
