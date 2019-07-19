@@ -375,15 +375,7 @@ view: dpvhstgnditem {
 
   measure: pounds_sold {
     type: sum
-    sql: ${quantityunit} ;;
-    filters: {
-      field: category.name
-      value: "Coffee (FG)"
-    }
-    filters: {
-      field: category.name
-      value: "Coffee (FG)"
-    }
+    sql: ${pounds} ;;
   }
 
 }
